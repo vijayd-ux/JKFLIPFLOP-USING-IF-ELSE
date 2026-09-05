@@ -38,11 +38,56 @@ The maximum possible groupings of adjacent ones are already shown in the figure.
 
 **PROGRAM**
 
-/* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
+/* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by:  VIJAY D RegisterNumber: 212225230300
 */
+```
+module JK (q, qb, j, k, clock, reset);
 
+input j, k, clock, reset;
+output reg q, qb;
+
+always @(posedge clock)
+begin
+    if (!reset)
+    begin
+        q <= 0;
+        qb <= 1;
+    end
+    else
+    begin
+        if (j == 0 && k == 0)
+        begin
+            q <= q;
+            qb <= qb;
+        end
+        else if (j == 0 && k == 1)
+        begin
+            q <= 0;
+            qb <= 1;
+        end
+        else if (j == 1 && k == 0)
+        begin
+            q <= 1;
+            qb <= 0;
+        end
+        else if (j == 1 && k == 1)
+        begin
+            q <= ~q;
+            qb <= ~qb;
+        end
+    end
+end
+
+endmodule
+```
 **RTL LOGIC FOR FLIPFLOPS**
+<img width="1917" height="1077" alt="image" src="https://github.com/user-attachments/assets/a95e73e6-edde-4465-8701-fdae9ef87a8e" />
+
 
 **TIMING DIGRAMS FOR FLIP FLOPS**
+<img width="1302" height="621" alt="image" src="https://github.com/user-attachments/assets/bfbe0219-ae0b-4d0e-af23-b7fa41d30a85" />
+
 
 **RESULTS**
+
+Thus, the JK Flip-Flop was successfully implemented using Verilog HDL with an if-else behavioral description, and its functionality was verified according to the JK flip-flop functional table. The flip-flop performed hold, set, reset, and toggle operations correctly for the corresponding input combinations.
